@@ -241,8 +241,8 @@ function setupUse(params) {
       data.url = '/api/classify' + path;
       console.log($fileupload);
       if (data.files && data.files[0]) {
-        if(data.files[0]['size'] > 5242880) {
-          showError('The file size exceeds the limit allowed. The maximum file size is 5 MB.');
+        if(data.files[0]['size'] > 1000000) {
+          showError('The file size exceeds the limit allowed. The maximum file size is 1 MB.');
           return;
         } else {
           $error.hide();
