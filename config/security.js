@@ -19,7 +19,8 @@
 // security.js
 var secure  = require('express-secure-only'),
   rateLimit = require('express-rate-limit'),
-  helmet    = require('helmet');
+  helmet    = require('helmet'),
+  csrf      = require('csurf');
 
 module.exports = function (app) {
   app.enable('trust proxy');
@@ -36,5 +37,28 @@ module.exports = function (app) {
     delayMs: 0,
     max: 15
   }));
+
+  // 4. csrf
+  var csrfProtection = csrf({ cookie: true });
+  app.get('/', csrfProtection, function(req, res, next) {
+    req._csrfToken = req.csrfToken();
+    console.log(req.csrfToken());
+    next();
+  });
+
+  app.get('/test', csrfProtection, function(req, res, next) {
+    req._csrfToken = req.csrfToken();
+    next();
+  });
+
+  app.get('/train', csrfProtection, function(req, res, next) {
+    req._csrfToken = req.csrfToken();
+    next();
+  });
+
+  app.get('/use', csrfProtection, function(req, res, next) {
+    req._csrfToken = req.csrfToken();
+    next();
+  });
 
 };

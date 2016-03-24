@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '0.12'
+- '4'
+- stable
+env:
+  global:
+before_deploy: sudo npm install -g cf-blue-green
+deploy:
+  provider: script
+  script: cf-blue-green-travis
+  on:
+    branch: master
+    repo: IBM-Bluemix/cf-deployment-tracker-service

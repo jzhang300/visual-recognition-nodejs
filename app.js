@@ -59,19 +59,31 @@ var alchemyVision = watson.alchemy_vision({
 });
 
 app.get('/', function(req, res) {
-  res.render('use', datasets);
+  res.render('use', {
+    datasets: datasets,
+    ct: req._csrfToken
+  });
 });
 
 app.get('/use', function(req, res) {
-  res.render('use', datasets);
+  res.render('use', {
+    datasets: datasets,
+    ct: req._csrfToken
+  });
 });
 
 app.get('/train', function(req, res) {
-  res.render('train', datasets);
+  res.render('train', {
+    datasets: datasets,
+    ct: req._csrfToken
+  });
 });
 
 app.get('/test', function(req, res) {
-  res.render('test', datasets);
+  res.render('test', {
+    datasets: datasets,
+    ct: req._csrfToken
+  });
 });
 
 /**

@@ -3,11 +3,12 @@ html(lang='en')
     title Visual Recognition Demo
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='ct', content='#{ct}')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='icon', href='/images/favicon.ico', type='image/x-icon')
     link(rel='stylesheet', href='css/style.css')
     block extra-header
-
+    #{ct}
   body
     header._demo--heading
       ._demo--container
